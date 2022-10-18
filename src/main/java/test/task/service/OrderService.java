@@ -50,7 +50,7 @@ public class OrderService {
         total = dishesTotal + drinksTotal;
         order.setTotal(total);
 
-        System.out.println("Your bill is " + Math.floor(total) + ".\nGlad to see you next time!");
+        System.out.println("Your bill is " + Math.floor(total) + "$.\nGlad to see you next time!");
     }
 
     public void orderDish(DishType dishType) {
