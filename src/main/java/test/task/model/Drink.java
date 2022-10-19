@@ -20,13 +20,23 @@ public class Drink extends AbstractMeal {
     @Override
     public double getPrice() {
 
-        double additionPrice = super.getPrice();
-        if (iceCubes && lemon) additionPrice += 1;
-        if (iceCubes) additionPrice += 0.5;
-        if (lemon) additionPrice += 0.7;
+        double price = super.getPrice();
 
-        return additionPrice;
+        if (iceCubes && lemon) {
+            return price + 1;
+        }
+        if (iceCubes) {
+            return price + 0.5;
+        }
+        if (lemon) {
+            return price + 0.7;
+        }
+
+        return price;
     }
 
-
+    public void setIceCubesAndLemon(boolean iceCubes, boolean lemon) {
+        this.iceCubes = iceCubes;
+        this.lemon = lemon;
+    }
 }

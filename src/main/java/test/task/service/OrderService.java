@@ -52,9 +52,10 @@ public class OrderService {
 
         total = dishesTotal + drinksTotal;
         order.setTotal(total);
+        order.getDrinks().forEach(drink -> drink.setIceCubesAndLemon(false, false));
 
         System.out.println("Your bill is " +
-                new BigDecimal(total, new MathContext(5, RoundingMode.HALF_UP)) + "$." +
+                total + "$." +
                 "\nGlad to see you next time!");
     }
 
