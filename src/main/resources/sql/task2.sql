@@ -1,12 +1,19 @@
-select *
+select c.name
 from country c
-where 400 < (select sum(Population)
-             from city ct
-             where c.CountryID = ct.CountryID);
+         inner join city ct
+                    on c.countryid = ct.countryid
+group by c.name
+having sum(ct.population) > 400;
 
-select *
+
+
+select c.name
 from country c
-where 0 = (select count(1)
-           from city ct
-                    join building b on ct.CityID = b.CityID
-           where ct.CountryID = c.CountryID);
+except
+select c.name
+from country c
+         inner join city ct
+                    on c.countryid = ct.countryid
+         inner join building b
+                    on ct.cityid = b.cityid
+where c.countryid = ct.countryid;
