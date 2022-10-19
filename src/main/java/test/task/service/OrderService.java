@@ -8,6 +8,9 @@ import test.task.model.enumeration.DishType;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -50,7 +53,9 @@ public class OrderService {
         total = dishesTotal + drinksTotal;
         order.setTotal(total);
 
-        System.out.println("Your bill is " + Math.floor(total) + "$.\nGlad to see you next time!");
+        System.out.println("Your bill is " +
+                new BigDecimal(total, new MathContext(5, RoundingMode.HALF_UP)) + "$." +
+                "\nGlad to see you next time!");
     }
 
     public void orderDish(DishType dishType) {
